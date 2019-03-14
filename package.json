@@ -75,7 +75,6 @@
     "reselect": "^4.0.0"
   },
   "jest": {
-    "setupFiles": ["./src/setupTests.js"],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ]
