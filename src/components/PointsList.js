@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import { getPoints } from '../selectors';
+import { pointsSelector } from '../selectors';
 
 const mapStateToProps = (state) => {
-    const points = getPoints(state);
-    return { points };
+    const props = {
+        points: pointsSelector(state),
+    };
+    return props;
 };
 
 const actionCreators = {
@@ -28,7 +30,12 @@ class PointsList extends React.Component {
         return (
             <ul>
                 {points.map(({ id, text }) => (
-                    <li key={id}>{text}</li>
+                    <li key={id}>
+                        {text}
+                        <button type="button" data-test="point-remove" className="btn-close" onClick={this.handleRemovePoint(id)}>
+                            <span>&times;</span>
+                        </button>
+                    </li>
                 ))}
             </ul>
         );

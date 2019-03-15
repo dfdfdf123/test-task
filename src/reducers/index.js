@@ -8,7 +8,7 @@ const points = handleActions({
     [actions.addPoint](state, { payload: { point } }) {
         return { ...state, [point.id]: point };
     },
-    [actions.removeTask](state, { payload: { id } }) {
+    [actions.removePoint](state, { payload: { id } }) {
         return _.omit(state, id);
     },
 }, {});
